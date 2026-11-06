@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Dedu! 💚</title>
+
+  <!-- Cute Google Fonts (needs internet; the site still works with fallback fonts if offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Fredoka:wght@400;500;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="1">
+
+  <!-- ============ BACKGROUND EFFECT LAYERS (filled by script.js) ============ -->
+  <div id="fx"></div>      <!-- falling hearts, bubbles, stars, sparkles, glow -->
+  <div id="fxTop"></div>   <!-- heart explosions + confetti (on top of everything) -->
+
+  <!-- ============ MUSIC BUTTON (visible on every page) ============ -->
+  <button id="musicBtn" class="music-btn" type="button" aria-pressed="false">🔇 Music OFF</button>
+
+  <!-- =====================================================================
+       PAGE 1 — THE BIRTHDAY FAMILY
+       ===================================================================== -->
+  <section class="page" id="page1">
+    <div class="page-inner">
+      <h1 class="big-title">HAPPY BIRTHDAY, <span>DAUGHTER!</span></h1>
+
+      <!-- The bear family. data-type = which bear. script.js draws them. -->
+      <div class="family" id="family1">
+        <div class="bear" data-type="mom"></div>
+        <div class="bear" data-type="daughter"></div>
+        <div class="bear" data-type="dad"></div>
+      </div>
+
+      <p class="question">Are you ready to celebrate your birthday with us?</p>
+
+      <div class="btn-row">
+        <button class="btn" id="yesBtn" type="button">YES! 💚</button>
+        <button class="btn btn-no" id="noBtn" type="button">NO! 🥺</button>
+      </div>
+
+      <p class="message" id="msg1" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       PAGE 2 — A LITTLE WARNING FOR DEDU
+       ===================================================================== -->
+  <section class="page" id="page2">
+    <div class="page-inner">
+      <h2 class="soft-title">Something special is coming… ✨</h2>
+      <div class="family small">
+        <div class="bear" data-type="mom"></div>
+        <div class="bear" data-type="daughter"></div>
+        <div class="bear" data-type="dad"></div>
+      </div>
+    </div>
+
+    <!-- The blurred pop-up -->
+    <div class="modal-overlay" id="warnOverlay">
+      <div class="modal warn-modal" role="dialog" aria-modal="true">
+        <div class="bear sign-bear" data-type="daughter" data-sign="1"></div>
+        <h2>WAIT A MINUTE! ⚠️</h2>
+        <p>Heyyy Dedu! Are you ready for what's coming next? This little birthday surprise is made with so much love, just for you!</p>
+        <p class="ready">Are you ready? Love u! 💚</p>
+        <div class="btn-row">
+          <button class="btn" id="readyBtn" type="button">YES, I'M READY!</button>
+          <button class="btn btn-alt" id="goBtn" type="button">LET'S GO!</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       PAGE 3 — LET'S CUT THE CAKE!
+       ===================================================================== -->
+  <section class="page" id="page3">
+    <div class="page-inner">
+      <h2 class="soft-title">Okayyy Dedu! Let's cut the cake then! 🎂</h2>
+
+      <div class="cake-stage">
+        <div class="bear side-bear" data-type="mom"></div>
+
+        <div class="cake-wrap" id="cakeWrap">
+          <svg class="cake-svg" id="cakeSvg" viewBox="0 0 300 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Birthday cake">
+            <defs>
+              <!-- The cake itself (drawn once, used twice: main cake + the slice we cut) -->
+              <g id="cakeBody">
+                <!-- bottom tier -->
+                <rect x="40" y="160" width="220" height="100" rx="16" fill="#fff4de"/>
+                <rect x="40" y="214" width="220" height="14" fill="#e9d3b4" opacity=".55"/>
+                <rect x="38" y="154" width="224" height="34" rx="17" fill="#bfe3c4"/>
+                <g fill="#bfe3c4">
+                  <ellipse cx="62" cy="188" rx="10" ry="15"/>
+                  <ellipse cx="108" cy="188" rx="9" ry="20"/>
+                  <ellipse cx="152" cy="188" rx="10" ry="13"/>
+                  <ellipse cx="198" cy="188" rx="9" ry="18"/>
+                  <ellipse cx="240" cy="188" rx="10" ry="14"/>
+                </g>
+                <g font-size="18" text-anchor="middle">
+                  <text x="68" y="244" fill="#8fc79a">♥</text>
+                  <text x="110" y="244" fill="#f4b6c8">♥</text>
+                  <text x="150" y="244" fill="#8fc79a">♥</text>
+                  <text x="190" y="244" fill="#f4b6c8">♥</text>
+                  <text x="232" y="244" fill="#8fc79a">♥</text>
+                </g>
+                <g fill="#fff" stroke="#e2d3b8" stroke-width="1">
+                  <circle cx="54" cy="254" r="3.5"/><circle cx="80" cy="254" r="3.5"/><circle cx="106" cy="254" r="3.5"/>
+                  <circle cx="132" cy="254" r="3.5"/><circle cx="158" cy="254" r="3.5"/><circle cx="184" cy="254" r="3.5"/>
+                  <circle cx="210" cy="254" r="3.5"/><circle cx="236" cy="254" r="3.5"/>
+                </g>
+                <!-- top tier -->
+                <rect x="80" y="106" width="140" height="56" rx="14" fill="#fff4de"/>
+                <rect x="78" y="98" width="144" height="30" rx="15" fill="#a8d5b0"/>
+                <g fill="#a8d5b0">
+                  <ellipse cx="102" cy="128" rx="9" ry="13"/>
+                  <ellipse cx="146" cy="128" rx="9" ry="18"/>
+                  <ellipse cx="190" cy="128" rx="9" ry="12"/>
+                </g>
+                <g font-size="14" text-anchor="middle">
+                  <text x="108" y="156" fill="#f4b6c8">♥</text>
+                  <text x="150" y="156" fill="#8fc79a">♥</text>
+                  <text x="192" y="156" fill="#f4b6c8">♥</text>
+                </g>
+                <!-- sprinkles -->
+                <g stroke-width="3" stroke-linecap="round">
+                  <line x1="92" y1="108" x2="96" y2="111" stroke="#fff"/>
+                  <line x1="118" y1="112" x2="122" y2="109" stroke="#f4b6c8"/>
+                  <line x1="176" y1="110" x2="180" y2="113" stroke="#fff"/>
+                  <line x1="204" y1="108" x2="208" y2="111" stroke="#f4b6c8"/>
+                </g>
+              </g>
+              <!-- Clip areas: left part stays, right part becomes the slice -->
+              <clipPath id="keepClip"><rect x="0" y="0" width="205" height="290"/></clipPath>
+              <clipPath id="sliceClip"><rect x="205" y="0" width="120" height="290"/></clipPath>
+            </defs>
+
+            <!-- birthday bunting (flags are added by script.js) -->
+            <path d="M0 10 Q150 40 300 10" fill="none" stroke="#8fc79a" stroke-width="2.5"/>
+            <g id="flags"></g>
+
+            <!-- plate -->
+            <ellipse cx="150" cy="270" rx="140" ry="16" fill="#f3ead8" stroke="#e2d3b8" stroke-width="2"/>
+            <ellipse cx="150" cy="268" rx="118" ry="11" fill="#fffaf0"/>
+
+            <!-- the cake (main + slice) -->
+            <g id="cakeMain" clip-path="url(#keepClip)"><use href="#cakeBody"/></g>
+            <g id="cakeSlice" clip-path="url(#sliceClip)"><use href="#cakeBody"/></g>
+
+            <!-- the candle -->
+            <g id="candle">
+              <g id="flame">
+                <circle cx="150" cy="46" r="20" fill="#ffe9a8" opacity=".45"/>
+                <ellipse cx="150" cy="46" rx="7" ry="12" fill="#ffb347"/>
+                <ellipse cx="150" cy="49" rx="3.8" ry="7.5" fill="#ffe27a"/>
+              </g>
+              <line id="wick" x1="150" y1="62" x2="150" y2="57" stroke="#5b4030" stroke-width="2.5" stroke-linecap="round"/>
+              <rect id="candleBody" x="143" y="62" width="14" height="42" rx="4" fill="#ffd3e2"/>
+              <g class="candle-stripes" stroke="#fff" stroke-width="3" opacity=".85">
+                <line x1="143" y1="72" x2="157" y2="68"/>
+                <line x1="143" y1="84" x2="157" y2="80"/>
+                <line x1="143" y1="96" x2="157" y2="92"/>
+              </g>
+            </g>
+
+            <!-- the knife (only appears when cutting) -->
+            <g id="knife">
+              <rect x="196" y="-20" width="16" height="36" rx="5" fill="#c9a27e"/>
+              <path d="M198 16 H210 V150 L204 160 L198 150 Z" fill="#eef3f4" stroke="#b6c1c4" stroke-width="1.5"/>
+            </g>
+          </svg>
+
+          <!-- smoke puffs appear above the candle after it is blown out -->
+          <div class="smoke" id="smoke"><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+
+        <div class="bear side-bear" data-type="dad"></div>
+      </div>
+
+      <p class="message banner" id="msg3" aria-live="polite"></p>
+
+      <div class="btn-row">
+        <button class="btn big hidden" id="cutBtn" type="button">LET'S CUT THE CAKE! 🎂</button>
+        <button class="btn big btn-alt hidden" id="next3Btn" type="button">CONTINUE 💌</button>
+      </div>
+    </div>
+
+    <!-- BIG countdown in the centre of the screen -->
+    <div class="countdown" id="countdown" aria-live="assertive"></div>
+
+    <!-- Wish pop-up (appears when the countdown reaches 0) -->
+    <div class="modal-overlay light" id="wishOverlay">
+      <div class="modal" role="dialog" aria-modal="true">
+        <h2>YAYYY! It's time to make a birthday wish, Dedu! 💚</h2>
+        <p class="ready">Now blow the candle! 🕯️</p>
+        <button class="btn big" id="blowBtn" type="button">BLOW THE CANDLE 💨</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       PAGE 4 — A LETTER FROM YOUR FAMILY
+       ===================================================================== -->
+  <section class="page" id="page4">
+    <div class="page-inner">
+      <h2 class="soft-title">YOUR BIRTHDAY LETTER FROM YOUR FAMILY 💌</h2>
+
+      <div class="envelope-stage" id="envStage">
+        <div class="envelope" id="envelope">
+          <div class="env-back"></div>
+          <div class="env-paper"></div>
+          <div class="env-front"></div>
+          <div class="env-flap"></div>
+          <div class="seal">💚</div>
+        </div>
+      </div>
+
+      <button class="btn big" id="openLetterBtn" type="button">OPEN YOUR LETTER 💌</button>
+
+      <!-- The letter. Text comes from CONFIG.letter in script.js -->
+      <div class="letter-card hidden" id="letterCard">
+        <div class="letter-text" id="letterText"></div>
+      </div>
+
+      <button class="btn big hidden" id="next4Btn" type="button">CONTINUE TO YOUR FINAL SURPRISE ✨</button>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       PAGE 5 — ONE LAST THING!
+       ===================================================================== -->
+  <section class="page" id="page5">
+    <div class="page-inner">
+      <h1 class="big-title">ONE LAST THING, DEDU! 💚</h1>
+
+      <div class="family">
+        <div class="bear" data-type="mom"></div>
+        <div class="bear" data-type="daughter"></div>
+        <div class="bear" data-type="dad"></div>
+      </div>
+
+      <!-- The gift box -->
+      <button class="gift" id="gift" type="button" aria-label="Open your gift">
+        <span class="gift-light"></span>
+        <span class="gift-heart">💚</span>
+        <span class="gift-box"></span>
+        <span class="gift-lid"><i class="bow-l"></i><i class="bow-r"></i></span>
+      </button>
+      <p class="hint">Tap the gift! 🎁</p>
+    </div>
+
+    <!-- Final pop-up -->
+    <div class="modal-overlay" id="finalOverlay">
+      <div class="modal final-modal" role="dialog" aria-modal="true">
+        <h2>LOVE YOU SO MUCH, DEDU! 💚</h2>
+        <p>Hope you enjoyed your little birthday surprise!</p>
+        <p>You deserve all the happiness in this world.</p>
+        <p>Happy Birthday once again, our precious daughter!</p>
+        <p>Sending you the biggest bear hugs and endless love!</p>
+        <button class="btn big" id="replayBtn" type="button">REPLAY MY BIRTHDAY SURPRISE ♡</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page transition (a green heart wipe) -->
+  <div id="wipe"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
